@@ -1,0 +1,27 @@
+version: 1
+AppDir:
+  path: AppDir
+  app_info:
+    id: com.chenabtech.BranchDesk
+    name: BranchDesk
+    icon: branchdesk
+    version: ${{APP_VERSION}}
+    exec: usr/bin/BranchDesk
+  files:
+    include:
+      - build/linux/x64/release/bundle/**
+    exclude:
+      - "**/*.a"
+
+recipe:
+  AppDir:
+    path: AppDir
+    apt:
+      arch: amd64
+      sources:
+        - deb http://archive.ubuntu.com/ubuntu/ focal main restricted universe multiverse
+      include:
+        - libgtk-3-0
+
+AppImage:
+  arch: x86_64

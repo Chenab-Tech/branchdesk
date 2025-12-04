@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=BranchDesk
+Comment=Open-source Git client for Windows, macOS, and Linux.
+Exec=BranchDesk
+Icon=branchdesk
+Terminal=false
+Type=Application
+Categories=Development;IDE;Git;
