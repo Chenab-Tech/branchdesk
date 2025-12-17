@@ -12,4 +12,4 @@ lfx_crowdfunding: # Replace with a single LFX Crowdfunding project-name e.g., cl
 polar: # replace with username
 buy_me_a_coffee: # Replace with a single Buy Me a Coffee username
 thanks_dev: # Replace with a single thanks.dev username
-custom: [ "https://buy.polar.sh/polar_cl_D0XDZrWt3UZ7ynTP2WfzOS3nvqUdoTiH4Ar7z3qNDVE" ]
+custom: # Replace with a single custom funding URL
