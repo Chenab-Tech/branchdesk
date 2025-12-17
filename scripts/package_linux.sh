@@ -50,4 +50,25 @@ fpm -s dir -t rpm \
 
 mv *.rpm $DIST_DIR/$APP_NAME-$VERSION.rpm
 
+# ---------------- FLATPAK ----------------
+# Ensure flatpak-builder is installed
+if command -v flatpak-builder &> /dev/null; then
+  echo "Building Flatpak..."
+  
+  # Install runtime if needed (optional, assuming environment has it or we skip)
+  # flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+  # flatpak install -y flathub org.freedesktop.Platform//22.08 org.freedesktop.Sdk//22.08
+
+  # Build the flatpak
+  mkdir -p build-flatpak
+  flatpak-builder --force-clean --repo=repo --install-deps-from=flathub build-flatpak flatpak/com.chenabtech.branchdesk.json
+  
+  # Create a single file bundle
+  flatpak build-bundle repo $DIST_DIR/$APP_NAME-$VERSION.flatpak com.chenabtech.BranchDesk
+  
+  rm -rf build-flatpak repo .flatpak-builder
+else
+  echo "flatpak-builder not found, skipping Flatpak build."
+fi
+
 echo "🎉 Linux packaging completed!"
